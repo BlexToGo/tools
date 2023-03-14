@@ -1,5 +1,5 @@
 # .bashrc will be executed with each bash subshell
-# Use for example to set aliases (which aren't propagated automatically like environment variables are)
+# use for example to set aliases (which aren't propagated automatically like environment variables are)
 
 # print path line-by-line
 alias path='echo $PATH | tr ":" "\n"'
@@ -14,7 +14,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias ls='ls -F'
 
-# Add alias to use the git_pull_all.sh script everywhere
+# add alias to use the git_pull_all.sh script everywhere
 alias gitpullall="/mnt/c/git/blex-tools/git_pull_all/git_pull_all.sh"
 
 # copy kubeconfigs from Windows to WSL

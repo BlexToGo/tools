@@ -18,4 +18,5 @@ alias ls='ls -F'
 alias gitpullall="/mnt/c/git/blex-tools/git_pull_all/git_pull_all.sh"
 
 # copy kubeconfigs from Windows to WSL
-#rsync -ar /mnt/c/Users/<WINDOWS_USER>/.kube/ ~/.kube --exclude cache --exclude cache --exclude http-cache
+# requires that the Windows user has the same name as the WSL user ($USER)
+rsync -arP /mnt/c/users/$USER/.kube/ ~/.kube --exclude cache --exclude http-cache

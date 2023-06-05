@@ -1,7 +1,7 @@
 # .profile will be executed once per session
 # use for example to load environment variables
 
-# add ssh identity to pull git repos via ssh
+# add ssh identity to pull git repos via ssh (obsolete when using the 1Password SSH agent)
 eval "$(ssh-agent)"
 ssh-add ~/.ssh/*_rsa
 

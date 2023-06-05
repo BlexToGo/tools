@@ -15,7 +15,7 @@ alias l='ls -CF'
 alias ls='ls -F'
 
 # add alias to use the git_pull_all.sh script everywhere
-alias gitpullall="/mnt/c/git/blex-tools/git_pull_all/git_pull_all.sh"
+alias gitpullall="~/repos/tools/git_pull_all/git_pull_all.sh"
 
 # copy kubeconfigs from Windows to WSL
 # requires that the Windows user has the same name as the WSL user ($USER)

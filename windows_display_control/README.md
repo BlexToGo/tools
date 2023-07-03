@@ -1,0 +1,2 @@
+# windows_display_control
+This folder contains batch scripts to change the output display so that it's possible to change the displays with one single button press instead of pressing `Win + P` multiple times.

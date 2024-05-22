@@ -5,7 +5,7 @@ sudo apt update
 
 # Install tools via snap
 sudo snap install google-cloud-cli --classic
-sudo snap install terraform
+sudo snap install terraform --classic
 sudo snap install kubectl --classic
 sudo snap install glab
 sudo snap install helm --classic

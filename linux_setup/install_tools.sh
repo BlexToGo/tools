@@ -1,10 +1,9 @@
 #!/bin/bash
 
 # Update package list
-sudo apt update
+sudo apt-get update
 
 # Install tools via snap
-sudo snap install google-cloud-cli --classic
 sudo snap install terraform --classic
 sudo snap install kubectl --classic
 sudo snap install glab
@@ -19,15 +18,22 @@ sudo snap install flameshot
 sudo add-apt-repository ppa:git-core/ppa
 
 # Install tools via apt
-sudo apt install -y tmux byobu git ansible openvpn git python3-pip
+sudo apt-get install -y tmux byobu git ansible openvpn git python3-pip apt-transport-https ca-certificates gnupg curl
+
+# Install Gcloud CLI
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg
+echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+sudo apt-get update
+sudo apt-get install -y google-cloud-cli
+sudo apt-get install -y google-cloud-sdk-gke-gcloud-auth-plugin google-cloud-sdk-terraform-validator
 
 # Install Docker
-sudo apt install -y ca-certificates
+sudo apt-get install -y ca-certificates
 sudo mkdir -p /etc/apt/keyrings
 sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt update
-sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin
+sudo apt-get update
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin
 
 # Install kube-capacity
 KUBE_CAPACITY_VERSION=$(curl -s https://api.github.com/repos/robscott/kube-capacity/releases/latest | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')

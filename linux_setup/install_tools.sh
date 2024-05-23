@@ -1,18 +1,24 @@
 #!/bin/bash
 
+# Prerequisites: Snap and Homebrew
+
 # Update package list
 sudo apt-get update
 
 # Install tools via snap
 sudo snap install terraform --classic
 sudo snap install kubectl --classic
-sudo snap install glab
 sudo snap install helm --classic
 sudo snap install k9s
 sudo snap install dive
 sudo snap install code --classic
 #sudo snap install openlens --classic
 sudo snap install flameshot
+sudo snap install yq
+sudo snap install tree
+
+# Install tools via brew
+brew install glab
 
 # Add the git PPA to install the latest stable upstream Git version
 sudo add-apt-repository ppa:git-core/ppa

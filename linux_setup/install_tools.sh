@@ -14,17 +14,16 @@ sudo snap install dive
 sudo snap install code --classic
 #sudo snap install openlens --classic
 sudo snap install flameshot
-sudo snap install yq
 sudo snap install tree
 
 # Install tools via brew
-brew install glab
+brew install glab yq
 
 # Add the git PPA to install the latest stable upstream Git version
 sudo add-apt-repository ppa:git-core/ppa
 
 # Install tools via apt
-sudo apt-get install -y tmux byobu git ansible openvpn git python3-pip apt-transport-https ca-certificates gnupg curl
+sudo apt-get install -y tmux byobu git ansible openvpn git python3-pip apt-transport-https ca-certificates gnupg curl jq
 
 # Install Gcloud CLI
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg

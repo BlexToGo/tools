@@ -20,6 +20,9 @@ alias gitpullall="~/repos/tools/git_pull_all/git_pull_all.sh"
 shopt -s histappend
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
+# Change terminal setting to not suspend the terminal on Ctrl + S
+stty -ixon
+
 
 # WSL specific
 

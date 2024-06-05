@@ -6,7 +6,6 @@
 sudo apt-get update
 
 # Install tools via snap
-sudo snap install terraform --classic
 sudo snap install kubectl --classic
 sudo snap install helm --classic
 sudo snap install k9s
@@ -40,12 +39,25 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.
 sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin
 
+# Install Terraform
+sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+wget -O- https://apt.releases.hashicorp.com/gpg | \
+gpg --dearmor | \
+sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
+sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update
+sudo apt-get install -y terraform
+
 # Install kube-capacity
 KUBE_CAPACITY_VERSION=$(curl -s https://api.github.com/repos/robscott/kube-capacity/releases/latest | grep '"tag_name":' | sed -E 's/.*"v([^"]+)".*/\1/')
 curl -Lo kube-capacity.tar.gz https://github.com/robscott/kube-capacity/releases/download/v$KUBE_CAPACITY_VERSION/kube-capacity_v${KUBE_CAPACITY_VERSION}_linux_x86_64.tar.gz
-tar -xzf kube-capacity.tar.gz || (echo "Failed to extract kube-capacity.tar.gz"; exit 1)
-sudo mv kube-capacity /usr/local/bin/
+mkdir -p kube-capacity
+tar -xzf kube-capacity.tar.gz -C kube-capacity || (echo "Failed to extract kube-capacity.tar.gz"; exit 1)
+sudo mv kube-capacity/kube-capacity /usr/local/bin/
 rm kube-capacity.tar.gz
+rm -r kube-capacity
 
 # Install switcher
 KUBESWITCH_VERSION=$(curl -s https://api.github.com/repos/danielfoehrKn/kubeswitch/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
